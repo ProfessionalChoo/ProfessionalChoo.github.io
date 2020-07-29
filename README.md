@@ -1,2 +1,2 @@
 # ProfessionalChoo.github.io
-Digital Portfolio
+Digital Portfolio by Professional Choo.

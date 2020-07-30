@@ -1,0 +1,21 @@
+.header {
+  color: rgb(255, 255, 255);
+  font-size: xx-large;
+
+  padding: 50px;
+}
+
+.title {
+  color: rgb(255, 255, 255);
+  font-size: xx-large;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+}
+.menu {
+  font-size: xx-large;
+  float: right;
+  text-align: center;
+
+  margin-right: auto;
+}

@@ -1,4 +1,3 @@
-
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
@@ -7,28 +6,32 @@ export default {
       path: '/',
       component: '../layouts/index',
       routes: [
-        { path: '/', component: '../pages/index' }
-      ]
-    }
+        { path: '/', component: '../pages/index' },
+        { path: '/dashboard', component: '../pages/dashboard' },
+      ],
+    },
   ],
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
-    ['umi-plugin-react', {
-      antd: true,
-      dva: true,
-      dynamicImport: false,
-      title: 'ProfessionalChoo.github.io',
-      dll: false,
-      
-      routes: {
-        exclude: [
-          /models\//,
-          /services\//,
-          /model\.(t|j)sx?$/,
-          /service\.(t|j)sx?$/,
-          /components\//,
-        ],
+    [
+      'umi-plugin-react',
+      {
+        antd: true,
+        dva: true,
+        dynamicImport: false,
+        title: 'ProfessionalChoo.github.io',
+        dll: false,
+
+        routes: {
+          exclude: [
+            /models\//,
+            /services\//,
+            /model\.(t|j)sx?$/,
+            /service\.(t|j)sx?$/,
+            /components\//,
+          ],
+        },
       },
-    }],
+    ],
   ],
-}
+};

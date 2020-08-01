@@ -1,8 +1,5 @@
 import React from 'react';
-import router from 'umi/router';
 import Link from 'umi/link';
-import PropTypes from 'prop-types';
-import { connect } from 'dva';
 import logo from '../assets/logo.png';
 
 import { Layout, Menu } from 'antd';

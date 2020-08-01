@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './cool.module.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import {} from 'antd';
 import Counter from '../components/counter';
 import JokeComponent from '../components/JokeBook/JokeBook';
 
@@ -60,6 +60,20 @@ const TestPage = () => {
       <br />
       <br />
       <JokeComponent />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

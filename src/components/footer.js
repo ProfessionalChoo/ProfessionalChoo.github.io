@@ -6,6 +6,7 @@ const FooterComponent = () => {
   const { Footer } = Layout;
   return (
     <Footer className={styles.footer}>
+      <hr />
       Professional Design {new Date().getFullYear()} Created by Professional Choo
     </Footer>
   );

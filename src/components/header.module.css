@@ -2,7 +2,7 @@
   color: rgb(255, 255, 255);
   font-size: xx-large;
 
-  padding: 50px;
+  padding: 1%;
 }
 
 .title {
@@ -13,7 +13,7 @@
   margin-top: auto;
 }
 .menu {
-  font-size: xx-large;
+  font-size: small;
   float: right;
   text-align: center;
 

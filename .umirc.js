@@ -8,6 +8,7 @@ export default {
       routes: [
         { path: '/', component: '../pages/index' },
         { path: '/dashboard', component: '../pages/dashboard' },
+        { path: '/testinggrounds', component: '../pages/test' },
       ],
     },
   ],

@@ -15,9 +15,9 @@ export default {
       }
     },
     *draw({ payload, callback, error }, { call, put }) {
-      const { deckId } = payload;
+      const { deckId, count } = payload;
       try {
-        const response = yield call(DrawCard, deckId);
+        const response = yield call(DrawCard, deckId, count);
         callback(response);
       } catch (err) {
         error(err);

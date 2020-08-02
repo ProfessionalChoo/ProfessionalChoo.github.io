@@ -12,9 +12,9 @@ export const ShuffleDeck = () => {
   return response;
 };
 
-export const DrawCard = deckId => {
+export const DrawCard = async deckId => {
   const id = 'zavvqjzq4z4m';
   const url = `https://deckofcardsapi.com/api/deck/${id}/draw/?count=1`;
-  const response = makeRequest(url);
+  const response = await makeRequest(url);
   return response;
 };

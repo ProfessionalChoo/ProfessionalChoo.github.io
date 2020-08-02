@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'dva';
-import { Button, message, Row, Col } from 'antd';
+import { Button, message, Row, Col, Modal } from 'antd';
 
 const BlackJackComponent = ({ dispatch }) => {
   const [deckId, setDeckId] = useState('');
   const [playerCards, setPlayerCards] = useState([]);
   const [buttonLoad, setButtonLoad] = useState(false);
   const [playerSum, setPlayerSum] = useState(0);
+  const [houseSum, setHouseSum] = useState(0);
+  const [modalState, setModalState] = useState(false);
 
-  const test = () => {
+  let card = null;
+
+  const checkSum = () => {
     //console.log(playerCards);
     let sum = 0;
     for (const [i, v] of playerCards.entries()) {
@@ -19,15 +23,17 @@ const BlackJackComponent = ({ dispatch }) => {
         sum = sum + parseInt(v.value);
       }
       setPlayerSum(sum);
+      if (sum > 21) {
+        setModalState(true);
+      }
     }
-    console.log(sum);
   };
   const CardList = props => {
     return <img src={props.img} style={{ maxHeight: '150px' }} alt="yes" />;
   };
 
   const PlayerComponent = () => {
-    test();
+    checkSum();
     return (
       <div>
         <Row>
@@ -49,10 +55,18 @@ const BlackJackComponent = ({ dispatch }) => {
   const HouseComponent = () => {
     return (
       <div>
-        <h1>House:</h1>
+        <Row>
+          <Col span={2} offset={10}>
+            <h1>House:</h1>
+          </Col>
+          <Col span={2}>
+            <h1>{houseSum}</h1>
+          </Col>
+        </Row>
       </div>
     );
   };
+
   const shuffle = () => {
     setButtonLoad(true);
     dispatch({
@@ -60,7 +74,7 @@ const BlackJackComponent = ({ dispatch }) => {
       callback: response => {
         console.log(response);
         setDeckId(response.deck_id);
-        setPlayerCards([]);
+        resetGame();
         setButtonLoad(false);
       },
       error: () => {
@@ -68,38 +82,60 @@ const BlackJackComponent = ({ dispatch }) => {
       },
     });
   };
-
-  const draw = () => {
+  const draw = async () => {
     setButtonLoad(true);
-
-    dispatch({
+    await dispatch({
       type: 'blackjack/draw',
       payload: {
         deckId: deckId,
       },
       callback: response => {
-        const card = response.cards[0];
-        console.log(card);
-        setPlayerCards(playerCards.concat({ img: card.image, value: card.value }));
-        setButtonLoad(false);
+        card = response.cards[0];
       },
       error: () => {
         message.error('failed to draw');
       },
     });
   };
+
+  const deal = () => {};
+
+  const hit = async () => {
+    await draw();
+    console.log(card);
+
+    //setPlayerCards(playerCards.concat({ img: card.image, value: card.value }));
+    setButtonLoad(false);
+  };
+  const stand = () => {
+    resetGame();
+  };
+  const resetGame = () => {
+    setPlayerCards([]);
+    setPlayerSum(0);
+  };
+
+  const handleOk = () => {
+    resetGame();
+    setModalState(false);
+  };
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>BLACKJACK</h1>
-      <PlayerComponent />
       <HouseComponent />
-      <Button onClick={shuffle} loading={buttonLoad}>
+
+      <PlayerComponent />
+      <Button onClick={shuffle} loading={buttonLoad} disabled={true}>
         New Game
       </Button>
-      <Button onClick={draw} loading={buttonLoad}>
+      <Button onClick={hit} loading={buttonLoad}>
         Hit
       </Button>
-      <Button onClick={test}>TEST</Button>
+      <Button onClick={deal}>deal</Button>
+      <Button onClick={stand}>Stand</Button>
+      <Modal title="Game Over" visible={modalState} onOk={handleOk} onCancel={handleOk}>
+        YOU LOSE LOSER
+      </Modal>
     </div>
   );
 };

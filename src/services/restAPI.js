@@ -5,3 +5,16 @@ export const JokeRequest = () => {
   const response = makeRequest(url);
   return response;
 };
+
+export const ShuffleDeck = () => {
+  const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6';
+  const response = makeRequest(url);
+  return response;
+};
+
+export const DrawCard = deckId => {
+  const id = 'zavvqjzq4z4m';
+  const url = `https://deckofcardsapi.com/api/deck/${id}/draw/?count=1`;
+  const response = makeRequest(url);
+  return response;
+};

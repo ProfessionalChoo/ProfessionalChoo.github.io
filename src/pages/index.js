@@ -1,16 +1,16 @@
 import React from 'react';
-import router from 'umi/router';
+import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.module.css';
 
 export default function() {
   const push = () => {
     console.log('HelloWorld');
-    router.push('/dashboard');
+    history.push('/dashboard');
   };
   const test = () => {
     console.log('testing');
-    router.push('/testinggrounds');
+    history.push('/testinggrounds');
   };
   return (
     <div className={styles.Index}>

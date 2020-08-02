@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import logo from '../assets/logo.png';
 
 import { Layout, Menu } from 'antd';

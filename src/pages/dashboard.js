@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import styles from './dashboard.module.css';
 import { Row, Col } from 'antd';
 

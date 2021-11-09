@@ -5,7 +5,7 @@ import styles from './style.module.css';
 
 const JokeComponent = ({ dispatch }) => {
   const [setup, setSetup] = useState('');
-  const [punchline, setPunchLine] = useState('');
+  const [delivery, setDelivery] = useState('');
   const [loading, setLoading] = useState(false);
 
   const generateJoke = () => {
@@ -20,7 +20,7 @@ const JokeComponent = ({ dispatch }) => {
         setLoading(false);
 
         setSetup(response.setup);
-        setPunchLine(response.punchline);
+        setDelivery(response.delivery);
       },
 
       error: () => {
@@ -32,10 +32,13 @@ const JokeComponent = ({ dispatch }) => {
   return (
     <div>
       <h1>JOKE: {setup}</h1>
-      <h2>PUNCHLINE: {punchline}</h2>
+      <h2>PUNCHLINE: {delivery}</h2>
       <Button onClick={generateJoke} loading={loading} className={styles.Button}>
         Click For Joke
       </Button>
+      <br/>
+      <a href="https://cors-anywhere.herokuapp.com/corsdemo"  style={{fontSize : 10}} >Click here if joke not working</a>
+
     </div>
   );
 };

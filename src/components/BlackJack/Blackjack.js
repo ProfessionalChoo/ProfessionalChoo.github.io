@@ -83,6 +83,7 @@ const BlackJackComponent = ({ dispatch }) => {
       },
     });
   };
+
   const draw = async () => {
     setButtonLoad(true);
     await dispatch({
@@ -139,7 +140,7 @@ const BlackJackComponent = ({ dispatch }) => {
       <HouseComponent />
 
       <PlayerComponent />
-      <Button onClick={shuffle} loading={buttonLoad} disabled={true}>
+      <Button onClick={shuffle} loading={buttonLoad} disabled={false}>
         New Game
       </Button>
       <Button onClick={hit} loading={buttonLoad}>

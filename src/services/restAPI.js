@@ -20,10 +20,9 @@ export const DrawCard = (deckId, count) => {
   return response;
 };
 
-export const CombineStrength = (cohort1, cohort2) => {
-  const c1 = cohort1;
-  const c2 = cohort2;
-  const url = `https://djangobells.herokuapp.com/playground/hello/?a=${cohort1}&b=${cohort2}`;
+export const joinStrength = (cohort1, cohort2) => {
+  const url = `https://djangobells.herokuapp.com/playground/str/?c1=${cohort1}&c2=${cohort2}`;
+  console.log(url)
   const response = makeRequest(url);
   return response;
 };
